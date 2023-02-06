@@ -68,3 +68,21 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+Define how we want to build this:
+The larger board
+Individual pieces 
+Styling stuff has to be decided
+
+Stages of functionality
+Just having the board
+Dropping pieces
+Choosing the kind of piece falling
+The pieces moving left to right
+The pieces roating
+Color variation
+Scoring
+Deciding if rows vanish in place or drop
+End game animation/how we want to handle losing
+Do we want piece options?
