@@ -13,9 +13,12 @@ const Board = styled.div`
 const GameBoard = ({height, width}) => {
   const cells = []
   for(let i = 0; i < height * width; i++) {
-    cells.push(<Cell></Cell>)
+    cells.push(0)
   }
-  return (<Board>{cells}</Board>)
+  const cellComponents = cells.map(cell => {
+    return cell > 0 ? <Cell filled/> : <Cell/>
+  })
+  return (<Board>{cellComponents}</Board>)
 }
 
 export default GameBoard
