@@ -11,11 +11,9 @@ const Container = styled.div`
 `;
 
 function App() {
-  const height = 15
-  const width = 8
   return (
     <Container className="App">
-      <GameBoard height={height} width={width}/>
+      <GameBoard/>
     </Container>
   );
 }

@@ -1,5 +1,9 @@
 import styled from "styled-components"
 import Cell from "./Cell";
+import { SHAPES } from "../constants/shapes";
+
+const HEIGHT = 15
+const WIDTH = 8
 
 const Board = styled.div`
   height: 75vh;
@@ -9,12 +13,28 @@ const Board = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
 `;
+const renderShape = (shape, gameBoard) => {
+  return gameBoard.map((cell, index) => {
+    if (shape.length === 1) {
+      return shape[0][index] ? shape[0][index] : cell
+    }
+    if (index === 0) {
+      return shape[0][index]
+    }
+    if (index % 8 === 0) {
+      return shape[(index / 8)] ? shape[index / 8][0] : cell
+    }
+    return cell
+  })
+}
 
-const GameBoard = ({height, width}) => {
-  const cells = []
-  for(let i = 0; i < height * width; i++) {
+const GameBoard = () => {
+  let cells = []
+  for(let i = 0; i < HEIGHT * WIDTH; i++) {
     cells.push(0)
   }
+  cells = renderShape(SHAPES[1][0], cells)
+  console.log(cells)
   const cellComponents = cells.map(cell => {
     return cell > 0 ? <Cell filled/> : <Cell/>
   })
