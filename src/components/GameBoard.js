@@ -14,18 +14,23 @@ const Board = styled.div`
   flex-wrap: wrap;
 `;
 const renderShape = (shape, gameBoard) => {
-  return gameBoard.map((cell, index) => {
-    if (shape.length === 1) {
-      return shape[0][index] ? shape[0][index] : cell
-    }
-    if (index === 0) {
-      return shape[0][index]
-    }
-    if (index % 8 === 0) {
-      return shape[(index / 8)] ? shape[index / 8][0] : cell
-    }
-    return cell
+  let finalGameBoard = gameBoard
+  shape.forEach((cell) => {
+    finalGameBoard[cell] = 1
   })
+  return finalGameBoard
+  // return gameBoard.map((cell, index) => {
+  //   if (shape.length === 1) {
+  //     return shape[0][index] ? shape[0][index] : cell
+  //   }
+  //   if (index === 0) {
+  //     return shape[0][index]
+  //   }
+  //   if (index % 8 === 0) {
+  //     return shape[(index / 8)] ? shape[index / 8][0] : cell
+  //   }
+  //   return cell
+  // })
 }
 
 const GameBoard = () => {
@@ -33,7 +38,7 @@ const GameBoard = () => {
   for(let i = 0; i < HEIGHT * WIDTH; i++) {
     cells.push(0)
   }
-  cells = renderShape(SHAPES[1][0], cells)
+  cells = renderShape(SHAPES[6][0], cells)
   console.log(cells)
   const cellComponents = cells.map(cell => {
     return cell > 0 ? <Cell filled/> : <Cell/>
