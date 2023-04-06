@@ -1,6 +1,7 @@
-import styled from "styled-components"
-import Cell from "./Cell";
-import { SHAPES } from "../constants/shapes";
+import React from 'react'
+import styled from 'styled-components'
+import Cell from './Cell'
+import { SHAPES } from '../constants/shapes'
 
 const HEIGHT = 15
 const WIDTH = 8
@@ -12,9 +13,9 @@ const Board = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-`;
+`
 const renderShape = (shape, gameBoard) => {
-  let finalGameBoard = gameBoard
+  const finalGameBoard = gameBoard
   shape.forEach((cell) => {
     finalGameBoard[cell] = 1
   })
@@ -35,7 +36,7 @@ const renderShape = (shape, gameBoard) => {
 
 const GameBoard = () => {
   let cells = []
-  for(let i = 0; i < HEIGHT * WIDTH; i++) {
+  for (let i = 0; i < HEIGHT * WIDTH; i++) {
     cells.push(0)
   }
   cells = renderShape(SHAPES[6][0], cells)

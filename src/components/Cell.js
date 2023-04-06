@@ -1,13 +1,14 @@
-import styled from "styled-components"
+import React from 'react'
+import styled from 'styled-components'
 
 const StyledCell = styled.div`
   height: 5vh;
   width: 5vh;
   outline: 2px solid black;
-  background-color: ${({filled}) => filled ? 'red' : null};
-`;
+  background-color: ${({ filled }) => filled ? 'red' : null};
+`
 
-const Cell = ({filled}) => {
+const Cell = ({ filled }) => {
   return (<StyledCell filled={filled}></StyledCell>)
 }
 
