@@ -8,7 +8,7 @@ const StyledCell = styled.div`
   background-color: ${({ filled }) => filled ? 'red' : null};
 `
 
-const Cell = ({ filled }) => {
+const Cell = ({ filled }: {filled: boolean}) => {
   return (<StyledCell filled={filled}></StyledCell>)
 }
 
