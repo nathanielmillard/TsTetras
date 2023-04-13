@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import Cell from './Cell.tsx'
 import { SHAPES } from '../constants/shapes'
+import { useState } from 'react'
+import { useEffect } from 'react'
 
 const HEIGHT = 15
 const WIDTH = 8
@@ -35,16 +37,28 @@ const renderShape = (shape, gameBoard) => {
 }
 
 const GameBoard = () => {
-  let cells = []
+  let initialCells = []
   for (let i = 0; i < HEIGHT * WIDTH; i++) {
-    cells.push(0)
+    initialCells.push(0)
   }
-  cells = renderShape(SHAPES[6][0], cells)
-  console.log(cells)
-  const cellComponents = cells.map(cell => {
-    return cell > 0 ? <Cell filled/> : <Cell/>
-  })
-  return (<Board>{cellComponents}</Board>)
+  const [cells, setCells] = useState(initialCells)
+  const [cellComponents, setCellComponents] = useState([])
+  useEffect(() => {
+    setCells(renderShape(SHAPES[6][0], cells))
+    let onload = cells.map(cell => {
+      return cell > 0 ? <Cell filled/> : <Cell/>
+    })
+    setCellComponents(onload)
+  }, [])
+  const dropRow = () => {
+    let fallingShape = SHAPES[6][0].map(cell => cell + 8)
+    setCells(renderShape(fallingShape, cells))
+    let onload = cells.map(cell => {
+      return cell > 0 ? <Cell filled/> : <Cell/>
+    })
+    setCellComponents(onload)
+  }
+  return (<Board onClick={dropRow}>{cellComponents}</Board>)
 }
 
 export default GameBoard
